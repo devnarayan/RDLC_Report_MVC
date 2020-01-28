@@ -35,16 +35,29 @@ namespace ASPNETMVC_SSRS_Demo.Reports
                         searchText = Request.QueryString["searchText"].ToString();
                     }
 
-                    List<ApplicationViewModel> applications = null;
+                    List<ApplicationViewModel> applications = new List<ApplicationViewModel>();
                     using (var _context = new Models.WorkpulseGSMEntities())
                     {
-                        applications = _context.MstApplications.Select(st => new ApplicationViewModel
+                        //applications = _context.MstApplications.Select(st => new ApplicationViewModel
+                        //{
+                        //    Id = st.Id,
+                        //    AppName = st.AppName,
+                        //    DisplayName = st.DisplayName,
+                        //    SourceId = st.SourceId
+                        //}).OrderBy(a => a.AppName).ToList();
+                        applications.Add(new ApplicationViewModel
                         {
-                            Id = st.Id,
-                            AppName = st.AppName,
-                            DisplayName = st.DisplayName,
-                            SourceId = st.SourceId
-                        }).OrderBy(a => a.AppName).ToList();
+                            Id = 1,
+                            AppName = "App",
+                            DisplayName = "Dis App"
+                        });
+                        applications.Add(new ApplicationViewModel
+                        {
+                            Id = 2,
+                            AppName = "App 2",
+                            DisplayName = "Dis App 2"
+                        });
+
                         ApplicationListReportViewer.LocalReport.ReportPath = Server.MapPath("~/Reports/Report1.rdlc");
                         ApplicationListReportViewer.LocalReport.DataSources.Clear();
                         ReportDataSource rdc = new ReportDataSource("EmployeeDataSet", applications);
