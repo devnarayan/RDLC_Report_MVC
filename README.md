@@ -11,3 +11,9 @@ Add below extension in Visual Studio 2019
 Install Below Nuget package into project solution.
 
 Install-Package Microsoft.ReportViewer.Runtime.Common
+
+
+Have look more featuers like bind multiple datasets to one report in below repository
+https://github.com/devnarayan/SSRS_RDLC/tree/master
+
+https://github.com/devnarayan/RDLC_Report_MVC
